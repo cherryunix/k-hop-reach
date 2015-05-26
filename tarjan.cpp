@@ -54,11 +54,3 @@ void PostTravl()
 {
 
 }
-
-int main()
-{
-	init();
-	solve();
-
-	return 0;
-}
