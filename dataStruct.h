@@ -4,10 +4,16 @@ namespace dStruct{
 	std::vector<int> prev_node;
 	int InDeg;
 	int OutDeg;
-	int Index_D1[2];
-	int Index_D2[2];
+	std::pair<int, int> depth;
+	std::pair<int, int> topOrder;
+	std::pair<int,int> indexP;
+	std::pair<int,int> indexF;
 	int belong;
 	std::vector<int> super_node;
 	};
-	
+	const int maxNodeNumber = 27771;
+	const int maxEdgeNumber = 352807;
+
 }
+
+#define MAXINT 214747384

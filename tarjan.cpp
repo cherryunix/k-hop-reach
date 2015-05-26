@@ -2,13 +2,13 @@
 
 extern dStruct::node VertexSet[27773];
 
-int DFN[27771];
-int LOW[27771];
+int DFN[dStruct::maxNodeNumber];
+int LOW[dStruct::maxNodeNumber];
 int Dindex;
-int instack[27771];
+int instack[dStruct::maxNodeNumber];
 int Stop;
 int Bcnt;
-int Stap[27771];
+int Stap[dStruct::maxNodeNumber];
 
 void tarjan(int i)
 {
@@ -45,12 +45,7 @@ void solve()
 	int i;
 	Stop = Bcnt = Dindex = 0;
 	memset(DFN, 0, sizeof(DFN));
-	for (i = 1; i <= 27771; i++)
+	for (i = 1; i <= dStruct::maxNodeNumber; i++)
 		if (!DFN[i])
 			tarjan(i);
-}
-
-void PostTravl()
-{
-
 }

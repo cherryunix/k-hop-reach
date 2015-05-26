@@ -21,9 +21,21 @@
     <ClCompile Include="tarjan.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="k-hop-main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dataStruct.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="k-hop-pre.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="tarjan.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -78,11 +78,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="k-hop-main.cpp" />
     <ClCompile Include="tarjan.cpp" />
     <ClCompile Include="k-hop-pre.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dataStruct.h" />
+    <ClInclude Include="k-hop-pre.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="tarjan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
