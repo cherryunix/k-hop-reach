@@ -1,42 +1,6 @@
 #include "stdafx.h"
 
-struct node{
-	std::vector<int> next_node;
-	std::vector<int> prev_node;
-	int InDeg;
-	int OutDeg;
-	int Index_D1[2];
-	int Index_D2[2];
-	int belong;
-	std::vector<int> super_node;
-};
-
-std::vector<int> ForwdStrVertex;
-std::vector<int> BakwdStrVertex;
-node VertexSet[27773];
-
-void init()
-{
-	int FromID;
-	int ToID;
-	std::ifstream InFile;
-	InFile.open("C:\\Users/cherryunix/Desktop/Cit-HepTh_exp.txt");
-	for (int i = 1; i <= 352807; i++)
-	{
-		InFile >> FromID >> ToID;
-		VertexSet[FromID].OutDeg++;
-		VertexSet[FromID].next_node.push_back(ToID);
-		VertexSet[ToID].InDeg++;
-		VertexSet[ToID].prev_node.push_back(FromID);
-	}
-	for (int i = 1; i <= 27770; i++)
-	{
-		if (VertexSet[i].InDeg == 0)
-			ForwdStrVertex.push_back(i);
-		if (VertexSet[i].OutDeg == 0)
-			BakwdStrVertex.push_back(i);
-	}
-}
+extern dStruct::node VertexSet[27773];
 
 int DFN[27771];
 int LOW[27771];
