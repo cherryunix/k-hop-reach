@@ -10,6 +10,11 @@ inline int min(int a, int b)
 	return a < b ? a : b;
 }
 
+inline int min(int a, int b)
+{
+	return a > b ? a : b;
+}
+
 void init()
 {
 	int FromID;
@@ -84,7 +89,12 @@ void ForwardOrderTravel(int curId)
 void ForwardDepth(int curId, int depth)
 {
 	dStruct::node &presentNode = VertexSet[curId];
-	presentNode.depth.first = depth;
+	if (!presentNode.depth.first)
+		presentNode.depth.first = depth;
+	else
+	{
+		presentNode.depth.first = min(presentNode.depth.first, depth);
+	}
 	if (presentNode.OutDeg == 0)
 		return;
 	for (std::vector<int>::iterator it = presentNode.next_node.begin(); it != presentNode.next_node.end(); ++it)
@@ -97,7 +107,14 @@ void ForwardDepth(int curId, int depth)
 void BackwordDepth(int curId, int depth)
 {
 	dStruct::node &presentNode = VertexSet[curId];
-	presentNode.depth.second = depth;
+	if (!presentNode.depth.second)
+	{
+		presentNode.depth.second = depth;
+	}
+	else
+	{
+		presentNode.depth.second = min(presentNode.depth.second, depth);
+	}
 	if (presentNode.InDeg == 0)
 		return;
 	for (std::vector<int>::iterator it = presentNode.prev_node.begin(); it != presentNode.prev_node.end(); ++it)
