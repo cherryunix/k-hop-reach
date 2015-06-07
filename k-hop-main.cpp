@@ -2,7 +2,7 @@
 
 std::vector<int> ForwdStrVertex;
 std::vector<int> BakwdStrVertex;
-extern dStruct::node VertexSet[dStruct::maxNodeNumber];
+dStruct::node VertexSet[dStruct::maxNodeNumber];
 static int isVisit[dStruct::maxNodeNumber] = { 0 };
 
 inline int min(int a, int b)
@@ -10,7 +10,7 @@ inline int min(int a, int b)
 	return a < b ? a : b;
 }
 
-inline int min(int a, int b)
+inline int max(int a, int b)
 {
 	return a > b ? a : b;
 }
@@ -24,6 +24,8 @@ void init()
 	for (int i = 1; i <= dStruct::maxEdgeNumber; i++)
 	{
 		InFile >> FromID >> ToID;
+		VertexSet[FromID].locNum = FromID;
+		VertexSet[ToID].locNum = ToID;
 		VertexSet[FromID].OutDeg++;
 		VertexSet[FromID].next_node.push_back(ToID);
 		VertexSet[ToID].InDeg++;
@@ -244,7 +246,47 @@ void travel()
 	}
 }
 
-int main()
+int IsSame(dStruct::node *a, dStruct::node *b)
 {
+	if ((*a).locNum == (*b).locNum)
+		return 1;
+	else
+		return 0;
+}
+
+bool BiRch_BTL(dStruct::node *startNode, dStruct::node *endNode, int step)
+{
+	if (IsSame(startNode,endNode))
+		return true;
+	if (step == 0)
+		return false;
+	if ((((*endNode).depth.first - (*startNode).depth.first) > step) || (((*startNode).depth.second - (*endNode).depth.second) > step))
+		return false;
+	if (((*startNode).topOrder.first >= (*endNode).topOrder.first) || ((*startNode).topOrder.second >= (*endNode).topOrder.second))
+		return false;
+	if ((*startNode).OutDeg < (*endNode).InDeg)
+	{
+		for (std::vector<int>::iterator it = (*startNode).next_node.begin(); it != (*startNode).next_node.end(); ++it)
+		{
+			dStruct::node *tmpNode = &VertexSet[*it];
+			if (BiRch_BTL(tmpNode, endNode, step - 1))
+				return true;
+		}
+	}
+	else
+	{
+		for (std::vector<int>::iterator it = (*endNode).prev_node.begin(); it != (*endNode).prev_node.end(); ++it)
+		{
+			dStruct::node *tmpNode = &VertexSet[*it];
+			if (BiRch_BTL(startNode, tmpNode, step - 1))
+				return true;
+		}
+	}
+	return false;
+}
+
+int main(int )
+{
+
 	return 0;
 }

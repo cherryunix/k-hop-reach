@@ -1,5 +1,6 @@
 namespace dStruct{
 	struct node{
+	int locNum;
 	std::vector<int> next_node;
 	std::vector<int> prev_node;
 	int InDeg;
@@ -9,10 +10,10 @@ namespace dStruct{
 	std::pair<int,int> indexP;
 	std::pair<int,int> indexF;
 	int belong;
-	std::vector<int> super_node;
 	};
 	const int maxNodeNumber = 27771;
 	const int maxEdgeNumber = 352807;
+	
 
 }
 

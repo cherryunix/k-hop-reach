@@ -36,7 +36,7 @@ void tarjan(int i)
 			j = Stap[Stop--];
 			instack[j] = false;
 			VertexSet[j].belong = i;
-			VertexSet[i].super_node.push_back(j);
+			//VertexSet[i].super_node.push_back(j);
 		} while (j != i);
 	}
 }
